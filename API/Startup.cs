@@ -35,7 +35,7 @@ namespace API
                         .WithOrigins("http://localhost:3000");
                 });
             });
-            services.AddMediatR(typeof(List.Handler).Assembly);
+            services.AddMediatR(typeof(List.ListQueryHandler).Assembly);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

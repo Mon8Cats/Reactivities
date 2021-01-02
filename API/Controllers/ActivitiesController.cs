@@ -24,24 +24,24 @@ namespace API.Controllers
         public async Task<ActionResult<List<Activity>>> List()
         //public async Task<ActionResult<List<Activity>>> List(CancellationToken cancellationToken)
         {
-            return await _mediator.Send(new List.Query());
+            return await _mediator.Send(new List.ListQuery());
             //return await _mediator.Send(new List.Query(), cancellationToken);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Activity>> Details(Guid id)
         {
-            return await _mediator.Send(new Details.Query { Id = id });
+            return await _mediator.Send(new Details.DetailsQuery { Id = id });
         }
 
         [HttpPost]
-        public async Task<ActionResult<Unit>> Create(Create.Command command) // no need [FromBody]
+        public async Task<ActionResult<Unit>> Create(Create.CreateCommand command) // no need [FromBody]
         {
             return await _mediator.Send(command);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Unit>> Edit(Guid id, Edit.Command command)
+        public async Task<ActionResult<Unit>> Edit(Guid id, Edit.EditCommand command)
         {
             command.Id = id;
             return await _mediator.Send(command);
@@ -50,7 +50,7 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Unit>> Delete(Guid id)
         {
-            return await _mediator.Send(new Delete.Command { Id = id });
+            return await _mediator.Send(new Delete.DeleteCommand { Id = id });
         }
     }
 

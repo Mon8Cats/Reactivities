@@ -9,20 +9,20 @@ namespace Application.Activities
 {
     public class Details
     {
-        public class Query : IRequest<Activity>
+        public class DetailsQuery : IRequest<Activity>
         {
             public Guid Id { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, Activity>
+        public class DetailsQueryHandler : IRequestHandler<DetailsQuery, Activity>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            public DetailsQueryHandler(DataContext context)
             {
                 _context = context;
 
             }
-            public async Task<Activity> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Activity> Handle(DetailsQuery request, CancellationToken cancellationToken)
             {
                 var activity = await _context.Activities.FindAsync(request.Id);
                 return activity;

@@ -8,7 +8,7 @@ namespace Application.Activities
 {
     public class Edit
     {
-        public class Command : IRequest
+        public class EditCommand : IRequest
         {
             public Guid Id { get; set; }
             public string Title { get; set; }
@@ -19,15 +19,15 @@ namespace Application.Activities
             public string Venue { get; set; }
         }
 
-        public class Handler : IRequestHandler<Command>
+        public class EditCommandHandler : IRequestHandler<EditCommand>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            public EditCommandHandler(DataContext context)
             {
                 _context = context;
 
             }
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Unit> Handle(EditCommand request, CancellationToken cancellationToken)
             {
 
                 var activity = await _context.Activities.FindAsync(request.Id);

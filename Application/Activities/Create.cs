@@ -9,7 +9,7 @@ namespace Application.Activities
 {
     public class Create
     {
-        public class Command : IRequest // not return anything
+        public class CreateCommand : IRequest // not return anything
         {
             public Guid Id { get; set; }
             public string Title { get; set; }
@@ -20,15 +20,15 @@ namespace Application.Activities
             public string Venue { get; set; }
         }
 
-        public class Handler : IRequestHandler<Command>
+        public class CreateCommandHandler : IRequestHandler<CreateCommand>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            public CreateCommandHandler(DataContext context)
             {
                 _context = context;
 
             }
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Unit> Handle(CreateCommand request, CancellationToken cancellationToken)
             {
                 var activity = new Activity
                 {
