@@ -37,6 +37,8 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<Unit>> Create(Create.CreateCommand command) // no need [FromBody]
         {
+            //if (!ModelState.IsValid)
+            //    return BadRequest(ModelState);
             return await _mediator.Send(command);
         }
 
