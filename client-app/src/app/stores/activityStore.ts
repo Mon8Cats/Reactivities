@@ -41,7 +41,7 @@ class ActivityStore {
             runInAction('loading activities error', () => {
                 this.loadingInitial = false;
             });
-            console.log(error);          
+            console.log(error);         
         }
     };
 
@@ -134,26 +134,6 @@ class ActivityStore {
             console.log(error);
         }
     }
-
-    /*
-    @action openCreateForm = () => {
-        //this.editMode = true;
-        this.activity = null;
-    };
-
-    @action openEditForm = (id: string) => {
-        this.activity = this.activityRegistry.get(id);
-        //this.editMode = true;
-    };
-
-    @action cancelSelectedActivity = () => {
-        this.activity = null;    
-    };
-
-    @action cancelFormOpen = () => {
-        //this.editMode = false;
-    }
-    */
 }
 
 export default createContext(new ActivityStore());
